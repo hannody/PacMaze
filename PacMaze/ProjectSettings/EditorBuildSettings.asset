@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PackMaze/Scenes/GameLevel.unity
+    guid: 31d1dc01402a6274586eb6530d00ca8b
   m_configObjects: {}

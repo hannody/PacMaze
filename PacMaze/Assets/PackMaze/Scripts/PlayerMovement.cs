@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
 
     private Rigidbody rb;
+    private readonly float h_dir = 0;
+    private readonly float v_dir = 0;
 
     private void Awake()
     {
@@ -14,28 +16,26 @@ public class PlayerMovement : MonoBehaviour
 
         if(rb != null)
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY;
             rb.useGravity = false;
         }
     }
 
-    float d;
+    
 
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        if (h != 0 && v != 0)
+        if (h != 0)
         {
-            // no diagnal movement
-            v = 0;
+            rb.velocity = Mathf.Sign(h) * Vector3.right * speed;
         }
 
-        Vector3 movement = new Vector3(h, 0.0f, v);
-
-        rb.velocity = movement * speed;
-
-        //rb.MovePosition(transform.position + transform.forward * dir * Time.deltaTime);
+        if (v != 0)
+        {
+            rb.velocity = Mathf.Sign(v) * Vector3.forward * speed;
+        }
+        //print(rb.velocity.magnitude);
     }
 }

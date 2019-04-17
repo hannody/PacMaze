@@ -5,22 +5,17 @@ using UnityEngine;
 public class Collectables : MonoBehaviour
 {
     int score = 0;
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Coin")
-        {
-            Destroy(collision.gameObject);
-            score++;
-            print(score);
-        }
-    }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Coin")
+
+        if (other.gameObject.tag == Tags.pickup)
         {
+            other.GetComponent<Collider>().enabled = false;
             score++;
             print(score);
+            // Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

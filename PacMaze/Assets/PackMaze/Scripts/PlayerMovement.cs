@@ -64,8 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FPS_Movement(float h, float v)
     {
-        Vector3 movement = new Vector3(h, 0.0f, v);
-
-        rb.velocity = movement * speed;
+        rb.velocity = new Vector3(h, 0.0f, v) * speed;
     }
 }

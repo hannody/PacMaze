@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PackMaze/Scenes/GameLevel.unity
-    guid: 31d1dc01402a6274586eb6530d00ca8b
+    path: Assets/MazeGenBackup.unity
+    guid: 7d1df5cd6ee6f41449168ab710f63a0e
   m_configObjects: {}

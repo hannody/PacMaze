@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Pickup
   - TimerText
+  - PointsText
+  - ScoreText
   layers:
   - Default
   - TransparentFX

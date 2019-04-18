@@ -26,9 +26,31 @@ public class MazeSpawner : MonoBehaviour {
 	public bool AddGaps = true;
 	public GameObject GoalPrefab = null;
 
-	private BasicMazeGenerator mMazeGenerator = null;
+    //Added by mohanad
+    public GameObject enemyPrefab = null;
+    public static MazeSpawner instance = null;
+    public int Num_Points { get; set; } = 0;
 
-	void Start () {
+    private int Num_Enemies { get; set; } = 0;
+    //-------------------------------------- mohanad
+
+
+    private BasicMazeGenerator mMazeGenerator = null;
+    //Added by mohanad
+    private void Awake()
+    {
+        // Singleton
+
+        //if we don't currently have a sound effect instance...
+        if (instance == null)
+            //...set this one to be it...
+            instance = this;
+        //...otherwise...
+        else if (instance != this)
+            //...destroy this one because it is a duplicate
+            Destroy(gameObject);
+    }
+    void Start () {
 		if (!FullRandom) {
 			Random.seed = RandomSeed;
 		}
@@ -75,8 +97,33 @@ public class MazeSpawner : MonoBehaviour {
 					tmp.transform.parent = transform;
 				}
 				if(cell.IsGoal && GoalPrefab != null){
-					tmp = Instantiate(GoalPrefab,new Vector3(x,1,z), Quaternion.Euler(0,0,0)) as GameObject;
-					tmp.transform.parent = transform;
+
+                    // Modified by mohanad to choose   
+
+                    if (Random.Range(1, 20) % 2 != 0)
+                    {
+                        tmp = Instantiate(GoalPrefab, new Vector3(x, 1, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                        Num_Points++;
+                    }
+                    else
+                    {
+                        if (Num_Enemies == 0 || Num_Points < 23)
+                        {
+                            // Temp solution to prevent the enemy from spawning under the player at start of the game!
+                            tmp = Instantiate(GoalPrefab, new Vector3(x, 1, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                            Num_Points++;
+                            Num_Enemies++;
+                            //print(Num_Goals);
+                        }
+                        else
+                        {
+                            Num_Enemies++;
+                            tmp = Instantiate(enemyPrefab, new Vector3(x, 1, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                        }
+                        //----------------------------- mohanad
+                        UpdateUITexts.instance.UpdatePointsText(Num_Points);
+                        tmp.transform.parent = transform;
+                    }
 				}
 			}
 		}

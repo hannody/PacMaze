@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Detect a trigger with a collectable, requires a trigger collider, can be attached to root of the player.
 public class Collectables : MonoBehaviour
 {
     int score = 0;

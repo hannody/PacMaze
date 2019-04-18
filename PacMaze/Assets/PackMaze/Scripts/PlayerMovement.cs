@@ -8,7 +8,7 @@ public enum PlayerMovementStyle
 }
 
 
-// PlayerMovement script requires the Player's GameObject to have a Rigidbody component
+// PlayerMovement script requires the Player's GameObject to have a Rigidbody component, attach it to the player object.
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {

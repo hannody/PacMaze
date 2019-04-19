@@ -19,7 +19,6 @@ public class SlimeMaterialChanger : MonoBehaviour
         // Randomly pick a material from range 0 to all materials list content(length)
         rend.material = mats[Random.Range(0, mats.Count)];
         originalMat = rend.material;
-        StartCoroutine(Blinking());
     }
 
 

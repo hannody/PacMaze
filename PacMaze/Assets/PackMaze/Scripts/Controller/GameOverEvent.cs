@@ -22,5 +22,6 @@ public class GameOverEvent : MonoBehaviour
 
         //save the score
         ScoringSystem.instance.SaveScore();
+        UIGameOverController.instance.EnableGameOverPanel(true);
     }
 }

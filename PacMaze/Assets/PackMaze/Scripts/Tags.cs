@@ -7,6 +7,7 @@
     public static string points_text = "PointsText";
     public static string score_text = "ScoreText";
     public static string enemy = "Enemy";
+    public static string gameOverPanel = "GameOverPanel";
 
 
 

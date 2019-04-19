@@ -7,6 +7,7 @@ public class PlayerDetection : MonoBehaviour
     private WanderingAI wanderAi;
 
     private Transform player;
+
     private void Awake()
     {
         wanderAi = transform.GetComponent<WanderingAI>();
@@ -24,15 +25,19 @@ public class PlayerDetection : MonoBehaviour
     {
         if (other.tag == Tags.player)
         {
-            StopCoroutine(StopChasing());
-            StartCoroutine(StopChasing());
+            if (EnemyVulnerabilityController.instance.AllVulnerable == false)
+            {
+                // Start chasing the player only if status is not vulnerable
+                StopCoroutine(StopChasing());
+                StartCoroutine(StopChasing());
+            }
             
         }
     }
 
     private void Update()
     {
-        if(wanderAi.ChasePlayer == true)
+        if(wanderAi.ChasePlayer == true && EnemyVulnerabilityController.instance.AllVulnerable  == false)
         {
             if(Vector3.Distance(transform.position, player.transform.position) < 2)
             {

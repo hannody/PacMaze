@@ -10,6 +10,7 @@ TagManager:
   - TimerText
   - PointsText
   - ScoreText
+  - Enemy
   layers:
   - Default
   - TransparentFX

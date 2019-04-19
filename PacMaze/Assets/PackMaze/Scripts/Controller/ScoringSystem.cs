@@ -8,7 +8,7 @@ public class ScoringSystem : MonoBehaviour
 {
     public static ScoringSystem instance = null;
     public string score_key = "score";
-    public int SavedScore { get; set; } = 0;// increased by Collectable.cs
+    public int SavedScore { get; set; } = 0;// increased by (1) Collectable.cs. (2) PlayerDetection.cs if the enemy/slime is vulnerable (Vulnerable = true)
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class ScoringSystem : MonoBehaviour
             try
             {
                 SavedScore = PlayerPrefs.GetInt(score_key);
-                UpdateUITexts.instance.UpdateScoreText(SavedScore);
+                
             }
             catch(System.Exception e)
             {
@@ -40,6 +40,11 @@ public class ScoringSystem : MonoBehaviour
             }
         }
 
+    }
+
+    private void Start()
+    {
+        UpdateUITexts.instance.UpdateScoreText(SavedScore);
     }
 
     public void SaveScore()

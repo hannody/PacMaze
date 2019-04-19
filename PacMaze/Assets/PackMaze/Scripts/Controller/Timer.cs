@@ -60,7 +60,13 @@ public class Timer : MonoBehaviour
 
             SetTimer --;
 
+
             UpdateUITexts.instance.UpdateTimerText(SetTimer);
+
+            if(SetTimer < 1)
+            {
+                GameOverEvent.instance.GameOver();
+            }
 
             yield return null;
         }

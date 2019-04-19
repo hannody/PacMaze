@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 
 // Detect a trigger with a collectable, requires a trigger collider, can be attached to root of the player.
 public class Collectables : MonoBehaviour
@@ -25,8 +25,19 @@ public class Collectables : MonoBehaviour
             UpdateUITexts.instance.UpdatePointsText(--MazeSpawner.instance.Num_Points);
 
             other.gameObject.SetActive(false);
+
+            EnemyVulnerabilityController.instance.AllVulnerable = true;// affected scripts are SlimeMatetialChanger.cs has (a monitor) and EnemyKillEvent.cs (both attached to the enemy prefab) 
+
+            StopCoroutine(NormalStatus());
+            StartCoroutine(NormalStatus());
         }
     }
 
+    IEnumerator NormalStatus()
+    {
+        //print("Normal Status");
+        yield return new WaitForSeconds(5f);
+        EnemyVulnerabilityController.instance.AllVulnerable = false;
 
+    }
 }

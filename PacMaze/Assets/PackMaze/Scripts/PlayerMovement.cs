@@ -1,10 +1,12 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 
 public enum PlayerMovementStyle
 {
     PacMan_Style,
     FPS_Style,
+    Click_Move_to,
 }
 
 
@@ -22,11 +24,17 @@ public class PlayerMovement : MonoBehaviour
 
     private readonly float v_dir = 0;
 
+    private Camera cam;
+
+    private NavMeshAgent agent;
 
   
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
+        agent = GetComponent<NavMeshAgent>();
+        
     }
 
     
@@ -43,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerMovementStyle.FPS_Style:
                 FPS_Movement(h, v);
+                break;
+            case PlayerMovementStyle.Click_Move_to:
+                ClickMoveToPosStyle();
                 break;
         }
         //print(rb.velocity.magnitude);
@@ -66,4 +77,18 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(h, 0.0f, v) * speed;
     }
+    private void ClickMoveToPosStyle()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                agent.SetDestination(hit.point);
+            }
+        }
+    }
+
 }

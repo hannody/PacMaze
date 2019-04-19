@@ -27,4 +27,6 @@ public class Collectables : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
+
+
 }

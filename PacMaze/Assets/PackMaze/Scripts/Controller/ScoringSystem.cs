@@ -8,7 +8,7 @@ public class ScoringSystem : MonoBehaviour
 {
     public static ScoringSystem instance = null;
     public string score_key = "score";
-    public int SavedScore { get; set; } = 0;
+    public int SavedScore { get; set; } = 0;// increased by Collectable.cs
 
     private void Awake()
     {
@@ -42,20 +42,18 @@ public class ScoringSystem : MonoBehaviour
 
     }
 
-    public void SaveScore(int score)
+    public void SaveScore()
     {
-        if (score > 0)
+        
+        try
         {
-            try
-            {
-                SavedScore += score;
-                PlayerPrefs.SetInt(score_key, SavedScore);
-            }
-            catch (System.Exception e)
-            {
-                Debug.Log(e.Message + "at ==>" + System.DateTime.Now.ToString("yyyy/M/dd "));
-
-            }
+            PlayerPrefs.SetInt(score_key, SavedScore);
         }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message + "at ==>" + System.DateTime.Now.ToString("yyyy/M/dd "));
+
+        }
+        
     }
 }

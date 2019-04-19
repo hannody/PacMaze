@@ -82,7 +82,7 @@ public class UpdateUITexts : MonoBehaviour
     // PointsText area
     public void UpdatePointsText(int points)
     {
-        score_text.text = string.Concat(points_msg, points.ToString());
+        points_text.text = string.Concat(points_msg, points.ToString());
     }
     //-------------------------------------------
 }

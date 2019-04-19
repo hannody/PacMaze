@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.AI;
 
 //<summary>
 //Game object, that creates maze and instantiates it in scene
@@ -30,8 +30,10 @@ public class MazeSpawner : MonoBehaviour {
     public GameObject enemyPrefab = null;
     public static MazeSpawner instance = null;
     public int Num_Points { get; set; } = 0;
+    public NavMeshSurface navS;
 
     private int Num_Enemies { get; set; } = 0;
+    
     //-------------------------------------- mohanad
 
 
@@ -50,7 +52,8 @@ public class MazeSpawner : MonoBehaviour {
             //...destroy this one because it is a duplicate
             Destroy(gameObject);
     }
-    void Start () {
+    void Start ()
+    {
 		if (!FullRandom) {
 			Random.seed = RandomSeed;
 		}
@@ -107,6 +110,7 @@ public class MazeSpawner : MonoBehaviour {
                     }
                     else
                     {
+                        // 23 is an arbtrary value used as temp solution here.
                         if (Num_Enemies == 0 || Num_Points < 23)
                         {
                             // Temp solution to prevent the enemy from spawning under the player at start of the game!
@@ -122,6 +126,7 @@ public class MazeSpawner : MonoBehaviour {
                         }
                         //----------------------------- mohanad
                         UpdateUITexts.instance.UpdatePointsText(Num_Points);
+                        //----------------------------------------------------
                         tmp.transform.parent = transform;
                     }
 				}
@@ -137,5 +142,6 @@ public class MazeSpawner : MonoBehaviour {
 				}
 			}
 		}
+        navS.BuildNavMesh();
 	}
 }

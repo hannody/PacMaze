@@ -3,6 +3,8 @@ using System.Collections;
 public class PlayerDetection : MonoBehaviour
 {
     public float stopChasingDuration = 5.5f;
+    public float normalSightRadius = 0.05f;
+    public float vulnerableSightRadius = 0.01f;
 
     private WanderingAI wanderAi;
 
@@ -45,6 +47,17 @@ public class PlayerDetection : MonoBehaviour
                 PlayerDamage.instance.KillThePlayer();
                 //print("Attack!!");
             }
+        }
+
+        // Last need improvement, but for this timed exercise's sake..
+        if(EnemyVulnerabilityController.instance.AllVulnerable == true)
+        {
+
+            GetComponent<SphereCollider>().radius = vulnerableSightRadius;
+        }
+        else
+        {
+            GetComponent<SphereCollider>().radius = normalSightRadius;
         }
     }
 

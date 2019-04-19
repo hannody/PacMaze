@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &369382830863525074
 Transform:
   m_ObjectHideFlags: 0
@@ -334,7 +334,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f8c84f5460f47374081e84f9c4d3df3e, type: 2}
   - {fileID: 2100000, guid: 34ed69aa6bba2c144ab35c115118a86c, type: 2}
   flashMat: {fileID: 2100000, guid: 9f32575d6990d6e468d4e139f30c0660, type: 2}
-  blinking_times: 15
+  vulnerablity_duration: 5
+  EyeSight: {fileID: 6920591017051745962}
 --- !u!1 &9035691295209400481
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +632,7 @@ GameObject:
   - component: {fileID: 97798589062775366}
   - component: {fileID: 2377620820859905363}
   - component: {fileID: 8801466611093252622}
+  - component: {fileID: 3515202558969172641}
   m_Layer: 0
   m_Name: Slime_Green
   m_TagString: Untagged
@@ -751,6 +753,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7eadd20c09c2fb4187a903630149ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &3515202558969172641
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035691298626366607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0.006, z: 0}
 --- !u!1 &9035691302131860937
 GameObject:
   m_ObjectHideFlags: 0

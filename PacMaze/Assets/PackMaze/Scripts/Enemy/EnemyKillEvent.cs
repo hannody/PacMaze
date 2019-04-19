@@ -13,13 +13,9 @@ public class EnemyKillEvent : MonoBehaviour
     {
         if (other.transform.tag == Tags.player && EnemyVulnerabilityController.instance.AllVulnerable == true)
         { 
-            if (Vector3.Distance(transform.position, player.transform.position) < 5f)
-            {
-                // Using distance is not presice, a better solution is to enforce this algorithm by using raycast hit to check if there is an object
-                //(e.g. wall, obstacle) between the player and the enemy then check for distance or ray length, update is required in the future for this demo..
-                EnemyKill();
-            }
-
+            // Using eighter distance or rely on collsion/triggers are not presice, a better solution is to enforce this algorithm by using raycast hit to check if there is an object
+            //(e.g. wall, obstacle) between the player and the enemy then check for distance or ray length, update is required in the future for this excersise..
+             EnemyKill();
         }
     }
 

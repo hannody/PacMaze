@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FPS_Movement(float h, float v)
     {
-        rb.velocity = new Vector3(h, 0.0f, v) * speed;
+        rb.velocity = new Vector3(h, 0, v) * speed;
     }
     private void ClickMoveToPosStyle()
     {

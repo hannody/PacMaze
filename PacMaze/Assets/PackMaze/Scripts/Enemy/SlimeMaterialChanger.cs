@@ -9,6 +9,10 @@ public class SlimeMaterialChanger : MonoBehaviour
 
     private Renderer rend;
     private Material originalMat;
+
+
+    public GameObject EyeSight;
+
     private void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -49,7 +53,6 @@ public class SlimeMaterialChanger : MonoBehaviour
 
         }
 
-    
     }
 
     IEnumerator Vulnerability_Detector()

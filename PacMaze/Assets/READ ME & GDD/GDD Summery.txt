@@ -1,0 +1,30 @@
+Packmaze
+Is a modified replica of the infamous Pacman classic, however, it will be 3D with FPS kind of control, featuring dynamic maze generation with dynamic navigation agents(slimes/ghosts)
+
+Winning Metric:
+collect all collectables before times runs out.
+
+Losing Criteria:
+Letting a slime touching you means the game is over, all collected points will be converted to scores and saved locally.
+
+Gameplay: 
+this game currently have two outcomes:
+1- Get killed by slimes.
+2- Kill all the slimes and collect all collectables.
+
+
+However, player can collect one collectable to gain score and make slime vulnerable for around 5 seconds, just hit the slime while its flashing!, but be careful to time your hit!
+
+Hitting a slime requires only touching it by the player (ball), slimes are capable of being aware about player getting close to them if they are not vulnerable yet!
+
+if you kill all the slimes and collected.
+
+
+Controls:
+WASD/ Arrows
+
+Note: there is a blue button at the left upper corner of the screen by which the game-over menu can be activated to allow the player either to Quit the game or to Reload the same level.
+
+Technical Design:
+There one controller that governs the non gameplay events, player code are attached to the player prefab, slime code are attached to its prefab as well, there are some comments to illustrate 
+the code interaction and variables life cycle.
